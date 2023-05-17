@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webdevops-deployment
+  name: proyecto-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webdevops
+      app: proyecto
   template:
     metadata:
       labels:
-        app: webdevops
+        app: proyecto
     spec:
       containers:
-      - name: webdevops
+      - name: proyecto
         image: 659026651741.dkr.ecr.us-east-1.amazonaws.com/asg
         imagePullPolicy: Always
         ports:
@@ -24,9 +24,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: webdevops
-    k8s-app: webdevops
-  name: webdevops
+    app: proyecto
+    k8s-app: proyecto
+  name: proyecto
 spec:
   ports:
   - name: http
@@ -35,4 +35,4 @@ spec:
     targetPort: 8080
   type: LoadBalancer
   selector:
-    app: webdevops
+    app: proyecto
